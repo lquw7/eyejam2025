@@ -2,10 +2,10 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Signals.StartDialogue.connect(handleDialogue)
+	Signals.InteractibleTriggered.connect(handleInteractible)
 
-func handleDialogue(triggerSource):
-	match triggerSource:
+func handleInteractible(intName: String):
+	match intName:
 		"Bed":
 			pass
 		"Ancient box":

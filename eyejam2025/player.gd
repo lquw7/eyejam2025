@@ -9,6 +9,10 @@ func _ready() -> void:
 	Signals.AllowPlayerMovement.connect(allowMovement)
 	
 	$MoveSound.finished.connect(allowFootstepsSound)
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action("interact"):
+		Signals.PlayerInteractPressed.emit()
 
 func _physics_process(_delta: float) -> void:
 	if self.canMove:

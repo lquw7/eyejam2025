@@ -10,13 +10,15 @@ func _ready() -> void:
 	
 	$Prompt.hide()
 	
-func _input(event: InputEvent) -> void:
-	if event.is_action("interact") and not Signals.isDialogueActive and $Prompt.visible:
-		Signals.StartDialogue.emit(self.interactibleName)
-		pass
+func on_body_entered(body: Node2D):
+	if body is CharacterBody2D:
+		$Prompt.show()
+		Signals.PlayerInteractPressed.connect(triggerInteractible)
 	
-func on_body_entered(_body: Node2D):
-	$Prompt.show()
-	
-func on_body_exited(_body: Node2D):
-	$Prompt.hide()
+func on_body_exited(body: Node2D):
+	if body is CharacterBody2D:
+		$Prompt.hide()
+		Signals.PlayerInteractPressed.disconnect(triggerInteractible)
+
+func triggerInteractible():
+	Signals.InteractibleTriggered.emit(interactibleName)
