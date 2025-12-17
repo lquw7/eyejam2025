@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://drosw1in4ga21"]
+[gd_scene load_steps=12 format=3 uid="uid://drosw1in4ga21"]
 
 [ext_resource type="Script" uid="uid://cl3ydgrs1tw8k" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://bovlvgu2x4hvh" path="res://player.tscn" id="2_0xm2m"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c4bwasl73wajh" path="res://art/main room/main_room.png" id="4_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bpwl55aiu5uq3" path="res://dialogue_handler.tscn" id="5_lquwl"]
 [ext_resource type="Texture2D" uid="uid://br4rlkf2677o7" path="res://art/main room/couch.png" id="6_7mycd"]
-[ext_resource type="Texture2D" uid="uid://d0xrl44mmmoma" path="res://art/kitchen/kitchen.png" id="7_272bh"]
+[ext_resource type="Texture2D" uid="uid://7mlkbypv16lr" path="res://art/bedroom/bedroom.png" id="6_kek77"]
+[ext_resource type="Texture2D" uid="uid://dnvyabshbpu14" path="res://art/bedroom/cat.png" id="7_4c57u"]
+[ext_resource type="Texture2D" uid="uid://c0gvw6swkdym" path="res://art/kitchen/kitchen.png" id="7_272bh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(501.5, 132)
@@ -47,15 +49,27 @@ position = Vector2(-9, -142)
 shape = SubResource("CircleShape2D_7mycd")
 
 [node name="Kitchen" type="Sprite2D" parent="."]
-position = Vector2(2614, 0)
+position = Vector2(2919, 0)
 texture = ExtResource("7_272bh")
 centered = false
+
+[node name="Bedroom" type="Sprite2D" parent="."]
+position = Vector2(5000, 0)
+texture = ExtResource("6_kek77")
+centered = false
+
+[node name="Cat" type="Sprite2D" parent="Bedroom"]
+position = Vector2(527, 624)
+texture = ExtResource("7_4c57u")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(833, 840)
 scale = Vector2(4.44, 4.44)
+
+[node name="PlayerStart" type="Marker2D" parent="."]
+position = Vector2(5333, 408)
 
 [node name="DialogueCreator" parent="." instance=ExtResource("5_lquwl")]
 visible = false

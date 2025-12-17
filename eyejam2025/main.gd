@@ -1,11 +1,17 @@
 extends Node2D
 
+# start, 
+# phase 1 - 
+enum {STATE_START}
+
+var gameState = STATE_START
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.InteractibleTriggered.connect(handleInteractible)
 	Signals.TeleTriggered.connect(teleToRoom)
 	
-	self.teleToRoom("MainRoom", "")
+	self.teleToRoom("Bedroom", "")
 	
 func teleToRoom(newRoomName: String, oldRoomName: String):
 	var roomNode: Sprite2D = get_node(newRoomName)
