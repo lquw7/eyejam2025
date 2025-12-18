@@ -42,3 +42,4 @@ offset_bottom = 44.0
 
 [node name="TypingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vfr1w")
+volume_db = -10.0

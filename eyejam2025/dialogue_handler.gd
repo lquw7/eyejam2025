@@ -18,6 +18,7 @@ func startOrAdvDialogue(speaker: String, speech: String):
 func createDialogue(speaker: String, speech: String):
 	self.visible = true
 	Signals.RemovePlayerMovement.emit()
+	Signals.DialogueStarted.emit()
 	
 	$ColorRect/Speaker.text = speaker
 	$ColorRect/Speech.text = ""
@@ -25,8 +26,9 @@ func createDialogue(speaker: String, speech: String):
 	var i = 0
 	while not self.advanceDialogue and $ColorRect/Speech.text != speech:
 		$ColorRect/Speech.text += speech[i]
-		$TypingSound.play()
-		await get_tree().create_timer(0.1).timeout
+		if i % 2 == 0:
+			$TypingSound.play()
+		await get_tree().create_timer(0.05).timeout
 		i += 1
 	
 	if self.advanceDialogue:
@@ -42,3 +44,4 @@ func createDialogue(speaker: String, speech: String):
 	self.advanceDialogue = false
 	self.finishDialogue = false
 	Signals.AllowPlayerMovement.emit()
+	Signals.DialogueFinished.emit()

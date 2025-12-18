@@ -10,4 +10,5 @@ signal InteractibleTriggered(intName: String)
 signal TeleTriggered(teleToPoint: Marker2D, cameraFocusPoint: Sprite2D)
 
 # dialogue signals
-signal StartDialogue(triggerSource: String)
+signal DialogueStarted
+signal DialogueFinished
