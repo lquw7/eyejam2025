@@ -1,7 +1,7 @@
 extends Control
 
 var advanceDialogue = false
-var finishDialogue = true
+var finishDialogue = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
