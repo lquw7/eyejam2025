@@ -18,6 +18,7 @@ func _ready() -> void:
 func teleToRoom(playerMoveSpot: Marker2D, cameraFocusPoint: Sprite2D):
 	$Player.position = playerMoveSpot.position
 	$Camera2D.position = cameraFocusPoint.position + cameraFocusPoint.get_rect().size / 2
+	$DialogueCreator.position = cameraFocusPoint.position + cameraFocusPoint.get_rect().size * Vector2(0.5, 0.75)
 
 func handleInteractible(intName: String):
 	match intName:

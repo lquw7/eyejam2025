@@ -6,8 +6,6 @@
 [node name="DialogueHandler" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
 script = ExtResource("1_lkejs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -25,19 +23,19 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 0.6392157)
 
-[node name="Speaker" type="Label" parent="."]
+[node name="Speaker" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 315.0
-offset_top = 570.0
-offset_right = 345.0
-offset_bottom = 593.0
+offset_left = 39.0
+offset_top = 22.0
+offset_right = 69.0
+offset_bottom = 45.0
 
-[node name="Speech" type="Label" parent="."]
+[node name="Speech" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 410.0
-offset_top = 569.0
-offset_right = 440.0
-offset_bottom = 592.0
+offset_left = 134.0
+offset_top = 21.0
+offset_right = 164.0
+offset_bottom = 44.0
 
 [node name="TypingSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vfr1w")
