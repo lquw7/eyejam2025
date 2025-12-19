@@ -2,6 +2,8 @@ extends Node
 
 # player signals
 signal PlayerInteractPressed
+signal RemovePlayerInteract
+signal AllowPlayerInteract
 signal RemovePlayerMovement
 signal AllowPlayerMovement
 

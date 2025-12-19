@@ -1,12 +1,15 @@
 extends CharacterBody2D
 
 @export var move_speed = 1000
-var canMove = true
-var footstepsAvailable = true
+var canMove := true
+var canInteract := true
+var footstepsAvailable := true
 
 func _ready() -> void:
 	Signals.RemovePlayerMovement.connect(removeMovement)
 	Signals.AllowPlayerMovement.connect(allowMovement)
+	Signals.RemovePlayerInteract.connect(removeInteract)
+	Signals.AllowPlayerInteract.connect(allowInteract)
 	
 	$MoveSound.finished.connect(allowFootstepsSound)
 	
@@ -28,6 +31,12 @@ func allowMovement():
 	
 func removeMovement():
 	self.canMove = false
+	
+func allowInteract():
+	self.canInteract = true
+	
+func removeInteract():
+	self.canInteract = false
 
 func allowFootstepsSound() -> void:
 	await get_tree().create_timer(0.25).timeout
