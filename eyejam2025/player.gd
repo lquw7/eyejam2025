@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
-@export var move_speed = 1000
+@export var move_speed = 500
 var canMove := true
 var canInteract := true
 var footstepsAvailable := true
+
+@onready var anim := $AnimatedSprite2D
 
 func _ready() -> void:
 	Signals.RemovePlayerMovement.connect(removeMovement)
@@ -25,6 +27,29 @@ func _physics_process(_delta: float) -> void:
 			$MoveSound.play()
 			footstepsAvailable = false
 		move_and_slide()
+	
+	self.update_animation()
+
+func update_animation() -> void:
+	if velocity == Vector2.ZERO:
+		anim.stop()
+		return
+
+	if abs(velocity.x) > abs(velocity.y):
+		anim.play("side")
+
+		if velocity.x < 0:
+			anim.flip_h = false
+		else:
+			anim.flip_h = true
+
+	else:
+		anim.flip_h = false 
+
+		if velocity.y < 0:
+			anim.play("up")
+		else:
+			anim.play("down")
 		
 func allowMovement():
 	self.canMove = true
